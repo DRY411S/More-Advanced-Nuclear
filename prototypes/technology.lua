@@ -1,47 +1,42 @@
-data.raw["technology"]["nuclear-power"].effects =
+local turbinePower = settings.startup["dry-turbine-power-output"].value or 1
+data:extend(
 {
+  {
+    type = "technology",
+    name = "more-nuclear-power",
+    icon = "__base__/graphics/technology/nuclear-power.png",
+    effects =
+    {
       {
         type = "unlock-recipe",
-        recipe = "nuclear-reactor"
-      },
-	  {
-	    type = "unlock-recipe",
-		recipe = "nuclear-reactor-2"
-	  },
-      {
-        type = "unlock-recipe",
-        recipe = "centrifuge"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "uranium-processing"
+        recipe = "dry-nuclear-reactor"
       },
       {
         type = "unlock-recipe",
-        recipe = "uranium-fuel-cell"
+        recipe = "dry-heat-exchanger"
       },
       {
         type = "unlock-recipe",
-        recipe = "heat-exchanger"
-      },
-	  {
-        type = "unlock-recipe",
-        recipe = "heat-exchanger-2"
+        recipe = "dry-heat-pipe"
       },
       {
         type = "unlock-recipe",
-        recipe = "heat-pipe"
-      },
-	  {
-        type = "unlock-recipe",
-        recipe = "heat-pipe-2"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "steam-turbine"
-      },
-	  {
-        type = "unlock-recipe",
-        recipe = "steam-turbine-2"
+        recipe = "dry-steam-turbine"
       }
-    }
+    },
+    prerequisites = {"nuclear-power"},
+    unit =
+    {
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30,
+      count = 1000*turbinePower
+    },
+    order = "e-p-b-c"
+  },
+}
+)

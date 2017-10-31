@@ -1,20 +1,20 @@
 data:extend({
     {
 	  type = "double-setting",
-	  name = "turbine-power-output",
+	  name = "dry-turbine-power-output",
 	  setting_type = "startup",
-	  default_value = 1.0
+	  default_value = 2.0
 	},
 	{
 	  type = "double-setting",
-	  name = "reactor-fuel-use",
+	  name = "dry-reactor-fuel-use",
 	  setting_type = "startup",
-	  default_value = 1.0
+	  default_value = 2.0
 	},
 	{
 	  type = "double-setting",
-	  name = "recipe-multiplier",
+	  name = "dry-recipe-multiplier",
 	  setting_type = "startup",
-	  default_value = 1.0
+	  default_value = 2.0
 	}
 })

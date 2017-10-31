@@ -1,4 +1,4 @@
-local mult = settings.startup["recipe-multiplier"].value
+local mult = settings.startup["dry-recipe-multiplier"].value or 1
 
 
 ---Copy entities from data.raw---
@@ -9,45 +9,39 @@ local advReactor = table.deepcopy(data.raw["recipe"]["nuclear-reactor"])
 
 ---Advanced Heat Exchanger---
   --Constant
-advExchange.name = "heat-exchanger-2"
-advExchange.result = "heat-exchanger-2"
+advExchange.name = "dry-heat-exchanger"
+advExchange.result = "dry-heat-exchanger"
   --Changing
-advExchange.enabled = true
-advExchange.ingredients = {{"steel-plate", math.floor(mult*10)}, {"copper-plate", math.floor(mult*100)}, {"pipe", math.floor(mult*10)}}
+advExchange.enabled = false
+advExchange.ingredients = {{"heat-exchanger", math.floor(mult)},}
 
 
 ---Advanced Steam Turbine---
   --Constant
-advTurbine.name = "steam-turbine-2"
-advTurbine.result = "steam-turbine-2"
+advTurbine.name = "dry-steam-turbine"
+advTurbine.result = "dry-steam-turbine"
   --Changing
-advTurbine.enabled = true
-advTurbine.ingredients = {{"iron-gear-wheel", math.floor(mult*50)}, {"copper-plate", math.floor(mult*50)}, {"pipe", math.floor(mult*20)}}
+advTurbine.enabled = false
+advTurbine.ingredients = {{"steam-turbine", math.floor(mult)},}
 
 ---Advanced Heat Pipe---
   --Constant
-advPipe.name = "heat-pipe-2"
-advPipe.result = "heat-pipe-2"
+advPipe.name = "dry-heat-pipe"
+advPipe.result = "dry-heat-pipe"
   --Changing
-advPipe.enabled = true
-advPipe.ingredients = {{"steel-plate", math.floor(mult*10)}, {"copper-plate", math.floor(mult*20)}}
+advPipe.enabled = false
+advPipe.ingredients = {{"heat-pipe", math.floor(mult)},}
 
 ---Advanced Nuclear Reactor---
   --Constant
-advReactor.name = "nuclear-reactor-2"
-advReactor.result = "nuclear-reactor-2"
+advReactor.name = "dry-nuclear-reactor"
+advReactor.result = "dry-nuclear-reactor"
   --Changing
-advReactor.enabled = true
-advReactor.ingredients = 
-    {
-      {"concrete", math.floor(mult*500)},
-      {"steel-plate", math.floor(mult*500)},
-      {"advanced-circuit", math.floor(mult*500)},
-      {"copper-plate", math.floor(mult*500)},
-    }
+advReactor.enabled = false
+advReactor.ingredients = {{"nuclear-reactor", math.floor(mult)},    }
 
 ---Put new entities into data.raw---
-data.raw["recipe"]["heat-exchanger-2"] = advExchange
-data.raw["recipe"]["steam-turbine-2"] = advTurbine
-data.raw["recipe"]["heat-pipe-2"] = advPipe
-data.raw["recipe"]["nuclear-reactor-2"] = advReactor
+data.raw["recipe"]["dry-heat-exchanger"] = advExchange
+data.raw["recipe"]["dry-steam-turbine"] = advTurbine
+data.raw["recipe"]["dry-heat-pipe"] = advPipe
+data.raw["recipe"]["dry-nuclear-reactor"] = advReactor

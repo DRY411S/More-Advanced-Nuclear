@@ -5,23 +5,23 @@ local advPipe = table.deepcopy(data.raw["item"]["heat-pipe"])
 local advReactor = table.deepcopy(data.raw["item"]["nuclear-reactor"])
 
 ---Advanced Heat Exchanger---
-advExchange.name = "heat-exchanger-2"
-advExchange.place_result = "heat-exchanger-2"
+advExchange.name = "dry-heat-exchanger"
+advExchange.place_result = "dry-heat-exchanger"
 
 ---Advanced Steam Turbine---
-advTurbine.name = "steam-turbine-2"
-advTurbine.place_result = "steam-turbine-2"
+advTurbine.name = "dry-steam-turbine"
+advTurbine.place_result = "dry-steam-turbine"
 
 ---Advanced Heat Pipe---
-advPipe.name = "heat-pipe-2"
-advPipe.place_result = "heat-pipe-2"
+advPipe.name = "dry-heat-pipe"
+advPipe.place_result = "dry-heat-pipe"
 
 ---Advanced Nuclear Reactor---
-advReactor.name = "nuclear-reactor-2"
-advReactor.place_result = "nuclear-reactor-2"
+advReactor.name = "dry-nuclear-reactor"
+advReactor.place_result = "dry-nuclear-reactor"
 
 ---Put new entities into data.raw---
-data.raw["item"]["heat-exchanger-2"] = advExchange
-data.raw["item"]["steam-turbine-2"] = advTurbine
-data.raw["item"]["heat-pipe-2"] = advPipe
-data.raw["item"]["nuclear-reactor-2"] = advReactor
+data.raw["item"]["dry-heat-exchanger"] = advExchange
+data.raw["item"]["dry-steam-turbine"] = advTurbine
+data.raw["item"]["dry-heat-pipe"] = advPipe
+data.raw["item"]["dry-nuclear-reactor"] = advReactor

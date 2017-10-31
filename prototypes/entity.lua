@@ -1,11 +1,10 @@
-local turbinePower = settings.startup["turbine-power-output"].value or 1
-local reactorFuel = settings.startup["reactor-fuel-use"].value or 1
+local turbinePower = settings.startup["dry-turbine-power-output"].value or 1
+local reactorFuel = settings.startup["dry-reactor-fuel-use"].value or 1
 
 local tempChange = 485*turbinePower
 local steamTemp = 15 + tempChange
 local maxTemp = steamTemp*2.5
 local reacPower = 40*turbinePower
-local reactorPower = reacPower.."MW"
 local reactorEff = turbinePower/reactorFuel
 
 ---Copy entities from data.raw---
@@ -18,10 +17,10 @@ local advReactor = table.deepcopy(data.raw["reactor"]["nuclear-reactor"])
 
 ---Advanced Heat Exchanger---
   --Constants
-advExchange.name = "heat-exchanger-2"
-advExchange.minable = {hardness = 0.2, mining_time = 0.5, result = "heat-exchanger-2"}
+advExchange.name = "dry-heat-exchanger"
+advExchange.minable = {hardness = 0.2, mining_time = 0.5, result = "dry-heat-exchanger"}
   --Changing
-advExchange.energy_consumption = "40MW"
+advExchange.energy_consumption = 10*turbinePower .. "MW"
 advExchange.target_temperature = steamTemp --Changes
 advExchange.energy_source =
     {
@@ -60,8 +59,8 @@ advExchange.energy_source =
 
 ---Advanced Steam Turbine---
   --Constants
-advTurbine.name = "steam-turbine-2"
-advTurbine.minable = {mining_time = 1, result = "steam-turbine-2"}
+advTurbine.name = "dry-steam-turbine"
+advTurbine.minable = {mining_time = 1, result = "dry-steam-turbine"}
   --Changing
 advTurbine.fluid_usage_per_tick = 1 --Reduces number of turbines needed
 advTurbine.maximum_temperature = steamTemp 
@@ -69,8 +68,8 @@ advTurbine.maximum_temperature = steamTemp
 
 ---Advanced Heat Pipe---
   --Constants
-advPipe.name = "heat-pipe-2"
-advPipe.minable = {hardness = 0.2, mining_time = 0.5, result = "heat-pipe-2"}
+advPipe.name = "dry-heat-pipe"
+advPipe.minable = {hardness = 0.2, mining_time = 0.5, result = "dry-heat-pipe"}
   --Changing
 advPipe.heat_buffer =
     {
@@ -100,14 +99,14 @@ advPipe.heat_buffer =
 
 ---Advanced Nuclear Reactor---
   --Constants
-advReactor.name = "nuclear-reactor-2"
-advReactor.minable = {mining_time = 1.5, result = "nuclear-reactor-2"}
+advReactor.name = "dry-nuclear-reactor"
+advReactor.minable = {mining_time = 1.5, result = "dry-nuclear-reactor"}
   --Changing
-advReactor.consumption = reactorPower
+advReactor.consumption = 40*turbinePower .. "MW" --Displays as 40*turbinePower/efficiency
 advReactor.burner =
     {
       fuel_category = "nuclear",
-      effectivity = reactorEff, --Changes
+      effectivity = reactorEff, --Changes rate of burn of a single fuel cell
       fuel_inventory_size = 1,
       burnt_inventory_size = 1
     }
@@ -170,7 +169,7 @@ advReactor.heat_buffer =
     }
 
 ---Put new entities into data.raw---
-data.raw["boiler"]["heat-exchanger-2"] = advExchange
-data.raw["generator"]["steam-turbine-2"] = advTurbine
-data.raw["heat-pipe"]["heat-pipe-2"] = advPipe
-data.raw["reactor"]["nuclear-reactor-2"] = advReactor
+data.raw["boiler"]["dry-heat-exchanger"] = advExchange
+data.raw["generator"]["dry-steam-turbine"] = advTurbine
+data.raw["heat-pipe"]["dry-heat-pipe"] = advPipe
+data.raw["reactor"]["dry-nuclear-reactor"] = advReactor

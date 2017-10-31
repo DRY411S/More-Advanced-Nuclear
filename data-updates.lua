@@ -1,4 +1,4 @@
-local turbinePower = settings.startup["turbine-power-output"] or 1
-local reactorFuel = settings.startup["reactor-fuel-use"] or 1
-local recipeMult = settings.startup["recipe-multiplier"] or 1
+local turbinePower = settings.startup["dry-turbine-power-output"].value or 1
+local reactorFuel = settings.startup["dry-reactor-fuel-use"].value or 1
+local recipeMult = settings.startup["dry-recipe-multiplier"].value or 1
 

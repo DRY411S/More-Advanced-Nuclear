@@ -1,11 +1,11 @@
 {
-  "name": "AdvancedNuclear",
-  "version": "0.1.1",
-  "title": "Advanced Nuclear",
-  "author": "Hopewell",
-  "contact": "",
-  "homepage": "",
-  "description": "Upgraded Nuclear (4X each component).",
-  "dependencies": ["base >= 0.15"],
+  "name": "MoreAdvancedNuclear",
+  "version": "0.15.0",
+  "title": "More Advanced Nuclear",
+  "author": "DRY411S",
+  "contact": "https://forums.factorio.com/ucp.php?i=pm&mode=compose&u=15698",
+  "homepage": "https://github.com/DRY411S/More-Advanced-Nuclear",
+  "description": "Based on the original Advanced Nuclear Mod by Hopewell, and debugged and adapted with his permission, this mod adds more powerful nuclear reactors, exchangers, heat pipes and turbines. This allows more power to be produced than vanilla nuclear, with the same number of entities, thus reducing the UPS required for the power produced.",
+  "dependencies": ["base >= 0.15.34"],
   "factorio_version": "0.15"
 }

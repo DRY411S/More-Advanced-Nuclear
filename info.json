@@ -1,0 +1,11 @@
+{
+  "name": "AdvancedNuclear",
+  "version": "0.1.1",
+  "title": "Advanced Nuclear",
+  "author": "Hopewell",
+  "contact": "",
+  "homepage": "",
+  "description": "Upgraded Nuclear (4X each component).",
+  "dependencies": ["base >= 0.15"],
+  "factorio_version": "0.15"
+}
